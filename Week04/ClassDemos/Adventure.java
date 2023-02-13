@@ -1,12 +1,15 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class Adventure{
     public static void main(String[] args) {
         final int MAX_HIT_POINTS;
         Scanner scan;
+        Random generator;
         String name, description;
         int hitPoints, armorClass, damage, round, healing;
-
+        
+        generator = new Random();
         scan = new Scanner(System.in);
 
         System.out.println("Please enter character name");
@@ -21,7 +24,8 @@ public class Adventure{
         description = "";
         //attacked by troll
         round = 1;
-        damage = 7;
+        damage = generator.nextInt(6) + 5; //rolled d6
+        healing = generator.nextInt(4) + 1;
         hitPoints -= damage;
 
         System.out.println("Round " + round);
@@ -35,16 +39,19 @@ public class Adventure{
         System.out.println(description); 
     
         round++;
+        damage = generator.nextInt(6) + 5; //rolled d6
         hitPoints -= damage;
         System.out.println("Round " + round);
         System.out.println("Troll hit for " + damage + ". " + name + " now has " + hitPoints + " hp left");
 
         //chug healing potion
         round++;
+        damage = generator.nextInt(6) + 5; //rolled d6
         hitPoints -= damage;
-        healing = 10;
+        healing = generator.nextInt(4) + 1;
         hitPoints += healing;
         System.out.println("Round " + round);
+        System.out.println("You drink a potion for: +" + healing + " hp");
         System.out.println("Troll hit for " + damage + ". " + name + " now has " + hitPoints + " hp left");
 
     }
