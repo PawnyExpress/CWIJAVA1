@@ -14,7 +14,7 @@ public class Wages
     //-----------------------------------------------------------------
     public static void main(String[] args)
     {
-        final double RATE = 8.25;  // regular pay rate
+        final double RATE = 42;  // regular pay rate
         final int STANDARD = 40;   // standard hours in a work week
 
         Scanner scan = new Scanner(System.in);
