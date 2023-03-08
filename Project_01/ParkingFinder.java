@@ -16,7 +16,7 @@ public class ParkingFinder {
         scan = new Scanner(System.in);
         
         
-        System.out.println("Give me a long");
+        System.out.println("Enter a random seed");
         seed = scan.nextLong();
 
         generator = new Random(seed);
@@ -24,23 +24,23 @@ public class ParkingFinder {
         System.out.println("How much time do you need to be parked for?");
         parkingTime = scan.nextInt();
 
-        carX = generator.nextInt(99);
-        carY = generator.nextInt(99);
+        carX = generator.nextInt(100);
+        carY = generator.nextInt(100);
 
         System.out.println("The position of your vehicle is: X:" + carX + " Y:" + carY);
 
-        //firstSpot = new ParkingSpot("Lenox Ave", carX , carY);
-        //firstSpot.setCostPerInterval(cost : 0.25);
-        // secondSpot = new ParkingSpot("Russel Way", randomX = generator.nextInt(99), randomY = generator.nextInt(99));
-        // thirdSpot = new ParkingSpot("Cherry Lane", randomX = generator.nextInt(99), randomY = generator.nextInt(99));
-        // fourthSpot = new ParkingSpot("Wisteria Lane", randomX = generator.nextInt(99), randomY = generator.nextInt(99));
+        firstSpot = new ParkingSpot("Lenox Ave", randomX = generator.nextInt(100), randomY = generator.nextInt(100));
+        secondSpot = new ParkingSpot("Russel Way", randomX = generator.nextInt(100), randomY = generator.nextInt(100));
+        thirdSpot = new ParkingSpot("Cherry Lane", randomX = generator.nextInt(100), randomY = generator.nextInt(100));
+        thirdSpot.setCostPerInterval(0.30);
+        fourthSpot = new ParkingSpot("Wisteria Lane", randomX = generator.nextInt(100), randomY = generator.nextInt(100));
+        fourthSpot.setCostPerInterval(0.30);
 
-        //System.out.println(firstSpot);
-        // System.out.println(secondSpot.toString());
-        // System.out.println(thirdSpot.toString());
-        // System.out.println(fourthSpot.toString());
-        ParkingSpot spot = new ParkingSpot("Beacon St.", 1, 85);
-        System.out.println(spot);
+        System.out.println(firstSpot);
+        System.out.println(secondSpot.toString());
+        System.out.println(thirdSpot.toString());
+        System.out.println(fourthSpot.toString());
+        
 
         scan.close();
     }
