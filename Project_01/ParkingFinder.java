@@ -10,7 +10,7 @@ public class ParkingFinder {
         ParkingSpot firstSpot, secondSpot, thirdSpot, fourthSpot;
         Scanner scan;
         long seed;
-        int parkingTime, carX, carY, randomX, randomY, distanceOne, distanceTwo, distanceThree, distanceFour, interval, disComOne, disComTwo;
+        int parkingTime, carX, carY, ranX, ranY, distOne, distTwo, distThree, distFour, interval, disComOne, disComTwo;
         Random generator;
         NumberFormat formatter;
               
@@ -22,7 +22,7 @@ public class ParkingFinder {
 
         generator = new Random(seed);
 
-        System.out.println("How much time do you need to be parked for?");
+        System.out.println("How much time do you need to be parked for? (minutes)");
         parkingTime = scan.nextInt();
 
         carX = generator.nextInt(100);
@@ -32,48 +32,48 @@ public class ParkingFinder {
 
         interval = (int)Math.ceil((double)parkingTime / 10);
 
-        firstSpot = new ParkingSpot("Lenox Ave", randomX = generator.nextInt(100), randomY = generator.nextInt(100));
-        distanceOne = Math.abs(carX - firstSpot.getLocationX() ) + Math.abs(carY - firstSpot.getLocationY());
+        firstSpot = new ParkingSpot("Lenox Ave", ranX = generator.nextInt(100), ranY = generator.nextInt(100));
+        distOne = Math.abs(carX - firstSpot.getLocationX() ) + Math.abs(carY - firstSpot.getLocationY());
         
-        secondSpot = new ParkingSpot("Russel Way", randomX = generator.nextInt(100), randomY = generator.nextInt(100));
-        distanceTwo = Math.abs(carX - secondSpot.getLocationX() ) + Math.abs(carY - secondSpot.getLocationY());
+        secondSpot = new ParkingSpot("Russel Way", ranX = generator.nextInt(100), ranY = generator.nextInt(100));
+        distTwo = Math.abs(carX - secondSpot.getLocationX() ) + Math.abs(carY - secondSpot.getLocationY());
 
-        thirdSpot = new ParkingSpot("Cherry Lane", randomX = generator.nextInt(100), randomY = generator.nextInt(100));
+        thirdSpot = new ParkingSpot("Cherry Lane", ranX = generator.nextInt(100), ranY = generator.nextInt(100));
         thirdSpot.setCostPerInterval(0.30);
-        distanceThree = Math.abs(carX - thirdSpot.getLocationX() ) + Math.abs(carY - thirdSpot.getLocationY());
+        distThree = Math.abs(carX - thirdSpot.getLocationX() ) + Math.abs(carY - thirdSpot.getLocationY());
         
-        fourthSpot = new ParkingSpot("Wisteria Lane", randomX = generator.nextInt(100), randomY = generator.nextInt(100));
+        fourthSpot = new ParkingSpot("Wisteria Lane", ranX = generator.nextInt(100), ranY = generator.nextInt(100));
         fourthSpot.setCostPerInterval(0.30);
-        distanceFour = Math.abs(carX - fourthSpot.getLocationX() ) + Math.abs(carY - fourthSpot.getLocationY());
+        distFour = Math.abs(carX - fourthSpot.getLocationX() ) + Math.abs(carY - fourthSpot.getLocationY());
 
-        disComOne = Math.min(distanceOne, distanceTwo);
-        disComTwo = Math.min(distanceThree, distanceFour);
+        disComOne = Math.min(distOne, distTwo);
+        disComTwo = Math.min(distThree, distFour);
 
         
 
         System.out.println("Spot 1: " + firstSpot.toString());
-        System.out.println("        Distance to spot 1 is: " + distanceOne);
+        System.out.println("        Distance to spot 1 is: " + distOne);
         System.out.println("        Total Cost for Spot 1: " + formatter.format(interval * firstSpot.getCostPerInterval()));
         System.out.println();
         System.out.println("Spot 2: " + secondSpot.toString());
-        System.out.println("        Distance to spot 2 is: "+ distanceTwo);
+        System.out.println("        Distance to spot 2 is: "+ distTwo);
         System.out.println("        Total Cost for Spot 2: " + formatter.format(interval * secondSpot.getCostPerInterval()));
         System.out.println();
         System.out.println("Spot 3: " + thirdSpot.toString());
-        System.out.println("        Distance to spot 3 is: " + distanceThree);
+        System.out.println("        Distance to spot 3 is: " + distThree);
         System.out.println("        Total Cost for Spot 3: " + formatter.format(interval * thirdSpot.getCostPerInterval()));
         System.out.println();
         System.out.println("Spot 4: " + fourthSpot.toString());
-        System.out.println("        Distance to spot 4 is: " + distanceFour);
+        System.out.println("        Distance to spot 4 is: " + distFour);
         System.out.println("        Total Cost for Spot 4: " + formatter.format(interval * fourthSpot.getCostPerInterval()));
         System.out.println();
         System.out.println("Distance to closest spot: " + Math.min(disComOne, disComTwo));
 
-        if (distanceOne < distanceTwo && distanceOne < distanceThree && distanceOne < distanceFour) {
+        if (distOne < distTwo && distOne < distThree && distOne < distFour) {
             System.out.println("Closest spot is: " + firstSpot );
-        } else if (distanceTwo < distanceOne && distanceTwo < distanceThree && distanceTwo < distanceFour) {
+        } else if (distTwo < distOne && distTwo < distThree && distTwo < distFour) {
             System.out.println("Closest spot is: " + secondSpot );
-        } else if (distanceThree < distanceOne && distanceThree < distanceTwo && distanceThree < distanceFour){
+        } else if (distThree < distOne && distThree < distTwo && distThree < distFour){
             System.out.println("Closest spot is: " + thirdSpot );
         } else {
             System.out.println("Closest spot is: " + fourthSpot );
