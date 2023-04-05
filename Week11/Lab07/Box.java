@@ -48,7 +48,7 @@ public class Box {
     }
 
     public double volume() {
-        volume = getDepth() * getHeight() * getWidth();
+        double volume = getDepth() * getHeight() * getWidth();
         return volume;
     }
 
